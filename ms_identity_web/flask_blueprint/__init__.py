@@ -47,6 +47,7 @@ class FlaskAADEndpoints(Blueprint):
         @self.route(endpoints.sign_out)
         def sign_out():
             logger.debug(f"{name}{endpoints.sign_out}: signing out username: {g.identity_context_data.username}")
+            id_web.remove_user(g.identity_context_data.username)
             return id_web.sign_out(url_for('.post_sign_out', _external = True))    # send the user to Azure AD logout endpoint
 
         @self.route(endpoints.post_sign_out)
