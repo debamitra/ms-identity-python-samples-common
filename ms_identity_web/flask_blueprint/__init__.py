@@ -26,6 +26,7 @@ class FlaskAADEndpoints(Blueprint):
                 id_web.id_data.post_sign_in_url = post_sign_in_url
                 logger.debug(f"{name}{endpoints.sign_in}: will redirect to {post_sign_in_url} afterwards")
             auth_url = id_web.get_auth_url(redirect_uri=url_for('.aad_redirect', _external=True))
+            logger.debug(f"get auth url befor redirecting to {auth_url} it")
             return redirect(auth_url)
 
         @self.route(endpoints.edit_profile)
