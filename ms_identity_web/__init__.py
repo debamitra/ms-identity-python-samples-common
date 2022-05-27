@@ -71,6 +71,7 @@ class IdentityWebPython(object):
         if token_cache:
             client_config['token_cache'] = token_cache
         client_config.update(**msal_client_kwargs)
+        self._logger.info(f"inside _client_factory client_config.. continuing.{client_config}")
         
         self._logger.info(f"inside _client_factory.. continuing.{client_config['authority']}")
 
