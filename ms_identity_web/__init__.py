@@ -85,7 +85,9 @@ class IdentityWebPython(object):
         auth_req_options.update(**msal_auth_url_kwargs)
         if redirect_uri:
             auth_req_options['redirect_uri'] = redirect_uri
-        self._generate_and_append_state_to_context_and_request(auth_req_options)
+        self._logger.info(f"inside get_auth_url: line 88 continuing. {auth_req_options}")
+        temp = self._generate_and_append_state_to_context_and_request(auth_req_options)
+        self._logger.info(f"inside get_auth_url: line 88 continuing. {temp}")
 
         if self.id_data.authenticated:
             auth_req_options['login_hint'] = self.id_data._id_token_claims.get('preferred_username', None)
